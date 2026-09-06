@@ -13,7 +13,7 @@ import Goals from "./pages/Goals/Goals.jsx";
 import TodoList from "./pages/ToDoList/TodoList.jsx";
 import Progress from "./pages/Progress/Progress.jsx";
 import OAuth2Success from "./OAuth2Sucess.jsx";
-import Notebook from "./pages/NoteBook/NoteBook.jsx";
+import Notebook from "./pages/Notebook/Notebook.jsx";
 import Settings from "./pages/Settings/Settings.jsx";
 import Assistant from "./pages/Assistant/Assistant.jsx";
 
