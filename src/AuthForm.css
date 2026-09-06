@@ -1,0 +1,514 @@
+
+
+/*CHANGED FILE*/ 
+
+* {
+    box-sizing: border-box;
+}
+
+.auth-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(124, 58, 237, 0.16),
+            transparent 30%
+        ),
+        #11101c;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.auth-card {
+    width: 100%;
+    max-width: 360px;                 /* 390px → 360px */
+
+    padding: 24px 26px;               /* 28px 32px → smaller */
+
+    background: #201d2d;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.auth-header {
+    margin-bottom: 19px;
+
+    margin-left: 0;                  /* remove fixed 140px positioning */
+}
+
+.logo-circle {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left:139px;
+    margin-bottom: 13px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    box-shadow:
+        0 7px 18px rgba(99, 102, 241, 0.25);
+}
+
+.auth-header h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: 650;
+
+    letter-spacing: -0.4px;
+}
+
+.auth-header p {
+    margin: 5px 0 0;
+
+    color: #9290a0;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group {
+    margin-bottom: 11px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #c4c1cc;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 36px;                    /* 38px → 36px */
+
+    padding: 0 11px;                 /* 12px → 11px */
+
+    border: 1px solid #3b3749;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #292637;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.input-group input::placeholder {
+    color: #686576;
+}
+
+.input-group input:hover {
+    border-color: #4a455b;
+}
+
+.input-group input:focus {
+    background: #2d293b;
+
+    border-color: #7564d8;
+
+    box-shadow:
+        0 0 0 2px rgba(117, 100, 216, 0.12);
+}
+
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.primary-button {
+    width: 100%;
+
+    height: 36px;                    /* 38px → 36px */
+
+    margin-top: 4px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: linear-gradient(
+        135deg,
+        #6d5bd0,
+        #7959d9
+    );
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 16px rgba(109, 91, 208, 0.25);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+}
+
+.primary-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================
+   LOGIN / REGISTER SWITCH
+========================= */
+
+.switch-auth {
+    margin-top: 13px;
+
+    text-align: center;
+
+    color: #777382;
+
+    font-size: 11px;
+}
+
+.switch-auth button {
+    margin-left: 4px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #8d7bea;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.switch-auth button:hover {
+    color: #a395f0;
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 15px 0;
+
+    color: #696575;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #373342;
+}
+
+
+/* =========================
+   GOOGLE BUTTON
+========================= */
+
+.google-button {
+    width: 100%;
+
+    height: 35px;                    /* 37px → 35px */
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 1px solid #3b3749;
+
+    border-radius: 7px;
+
+    background: #292637;
+
+    color: #d8d5df;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.google-button:hover {
+    background: #302c40;
+
+    border-color: #4c475b;
+
+    transform: translateY(-1px);
+}
+
+.google-icon {
+    width: 16px;
+    height: 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #4285f4;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+
+.success-message {
+    margin-bottom: 12px;
+
+    padding: 8px 10px;
+
+    border: 1px solid rgba(52, 211, 153, 0.2);
+
+    border-radius: 7px;
+
+    background: rgba(16, 185, 129, 0.08);
+
+    color: #6ee7b7;
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.error-message {
+    margin-bottom: 12px;
+
+    padding: 8px 10px;
+
+    border: 1px solid rgba(248, 113, 113, 0.2);
+
+    border-radius: 7px;
+
+    background: rgba(239, 68, 68, 0.08);
+
+    color: #fca5a5;
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-text {
+    margin: 13px 0 0;
+
+    text-align: center;
+
+    color: #5f5b69;
+
+    font-size: 9px;
+}
+
+/* =========================
+   PASSWORD INPUT
+========================= */
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 38px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+
+    transform: translateY(-50%);
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+
+    color: #8e899d;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: #b4a8e8;
+    
+}
+
+.password-toggle:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.password-toggle svg {
+    display: block;
+    overflow: visible;
+}
+
+/* the diagonal slash — always present, just scaled to 0 by default */
+.eye-slash {
+    transform-origin: 256px 256px;
+    transform: rotate(-135deg) scaleX(0);
+    transition: transform 0.22s ease;
+}
+
+/* when password is visible, draw the slash across the eye */
+.password-toggle.is-crossed .eye-slash {
+    transform: rotate(-135deg) scaleX(1.5);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .auth-page {
+        padding: 15px;
+    }
+
+    .auth-card {
+        max-width: 340px;
+
+        padding: 22px 20px;
+
+        border-radius: 14px;
+    }
+
+    .auth-header h1 {
+        font-size: 21px;
+    }
+}
+

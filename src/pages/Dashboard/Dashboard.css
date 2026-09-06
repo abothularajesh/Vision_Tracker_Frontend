@@ -1,0 +1,738 @@
+
+.dashboard {
+    min-height: 100vh;
+
+    background: #f8fafc;
+}
+
+.dashboard-main {
+    margin-left: 240px;
+
+    min-height: 100vh;
+    
+    min-width: 0;
+}
+
+.dashboard-content {
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    min-width: 0;
+}
+
+
+/* =========================
+   WELCOME
+   ========================= */
+
+.welcome-section {
+    margin-bottom: 28px;
+}
+
+.welcome-section h1 {
+    margin: 0 0 8px;
+
+    color: #111827;
+
+    font-size: 26px;
+    font-weight: 650;
+}
+
+.welcome-section p {
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   STATISTICS
+   ========================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
+.stat-title {
+    color: #6b7280;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+.stat-value {
+    color: #111827;
+
+    font-size: 25px;
+
+    font-weight: 650;
+}
+
+
+/* =========================
+   DASHBOARD PANELS
+   ========================= */
+
+.dashboard-panels {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr;
+
+    gap: 20px;
+
+    min-width: 0;
+}
+
+.dashboard-panel {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    min-height: 220px;
+
+    box-sizing: border-box;
+
+    min-width: 0;
+}
+
+.dashboard-panel h3 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   PANEL HEADER
+   ========================= */
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 16px;
+
+    min-width: 0;
+}
+
+.panel-header > div {
+    min-width: 0;
+}
+
+.panel-header h3 {
+    margin: 0 0 5px;
+}
+
+.panel-header p {
+    margin: 0;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   VIEW ALL
+   ========================= */
+
+.view-all-btn {
+    padding: 6px 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #6366f1;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   TODO LIST
+   ========================= */
+
+.dashboard-todo-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    min-width: 0;
+}
+
+.dashboard-todo-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.dashboard-todo-list::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+
+    border-radius: 10px;
+}
+
+
+/* Todo */
+
+.dashboard-todo-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 5px 0;
+
+    min-width: 0;
+}
+
+
+/* Checkbox */
+
+.todo-checkbox {
+    width: 20px;
+
+    min-width: 20px;
+
+    height: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #9ca3af;
+
+    font-size: 17px;
+
+    line-height: 20px;
+}
+
+.todo-checkbox.completed {
+    color: #6366f1;
+
+    font-weight: 700;
+}
+
+
+/* Todo Information */
+
+.todo-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+.todo-title {
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 20px;
+
+    overflow-wrap: anywhere;
+}
+
+.todo-description {
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    line-height: 17px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Empty / Loading */
+
+.todo-message {
+    min-height: 140px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   AI ASSISTANT
+   ========================= */
+
+.assistant-panel {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+.assistant-icon {
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 12px;
+
+    background: #eef2ff;
+
+    font-size: 22px;
+}
+
+.assistant-panel p {
+    margin: 8px 0 18px;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+    line-height: 19px;
+}
+
+.assistant-btn {
+    padding: 9px 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #6366f1;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   DARK MODE
+   ========================= */
+
+body.dark-mode {
+    background: #0f172a;
+}
+
+body.dark-mode .dashboard {
+    background: #0f172a;
+}
+
+body.dark-mode .navbar {
+    background: #111827;
+
+    border-color: #1f2937;
+}
+
+body.dark-mode .navbar-left h2 {
+    color: #f9fafb;
+}
+
+body.dark-mode .dashboard-content {
+    background: #0f172a;
+}
+
+body.dark-mode .welcome-section h1 {
+    color: #f9fafb;
+}
+
+body.dark-mode .welcome-section p {
+    color: #9ca3af;
+}
+
+
+/* Statistics */
+
+body.dark-mode .stat-card {
+    background: #111827;
+
+    border-color: #1f2937;
+}
+
+body.dark-mode .stat-title {
+    color: #9ca3af;
+}
+
+body.dark-mode .stat-value {
+    color: #f9fafb;
+}
+
+
+/* Panels */
+
+body.dark-mode .dashboard-panel {
+    background: #111827;
+
+    border-color: #1f2937;
+}
+
+body.dark-mode .dashboard-panel h3 {
+    color: #f9fafb;
+}
+
+
+/* Panel */
+
+body.dark-mode .panel-header p {
+    color: #9ca3af;
+}
+
+body.dark-mode .view-all-btn {
+    color: #a5b4fc;
+}
+
+
+/* Todo */
+
+body.dark-mode .todo-title {
+    color: #e5e7eb;
+}
+
+body.dark-mode .todo-description {
+    color: #9ca3af;
+}
+
+body.dark-mode .todo-checkbox {
+    color: #6b7280;
+}
+
+body.dark-mode .todo-checkbox.completed {
+    color: #818cf8;
+}
+
+
+/* Todo scrollbar */
+
+body.dark-mode .dashboard-todo-list::-webkit-scrollbar-thumb {
+    background: #374151;
+}
+
+
+/* Assistant */
+
+body.dark-mode .assistant-icon {
+    background: #312e81;
+}
+
+body.dark-mode .assistant-panel p {
+    color: #9ca3af;
+}
+
+
+/* Navbar */
+
+body.dark-mode .theme-toggle {
+    background: #1f2937;
+
+    border-color: #374151;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: #374151;
+}
+
+body.dark-mode .notification-btn {
+    color: #f9fafb;
+}
+
+body.dark-mode .notification-btn:hover {
+    background: #1f2937;
+}
+
+body.dark-mode .user-name {
+    color: #f9fafb;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-panels {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    /*
+     * Sidebar is now a drawer,
+     * so Dashboard uses the complete viewport.
+     */
+    .dashboard-main {
+        margin-left: 0;
+
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    .dashboard-content {
+        padding: 20px 16px;
+
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+
+    /* Welcome */
+
+    .welcome-section {
+        margin-bottom: 22px;
+    }
+
+    .welcome-section h1 {
+        font-size: 22px;
+
+        line-height: 30px;
+
+        overflow-wrap: anywhere;
+    }
+
+    .welcome-section p {
+        font-size: 13px;
+
+        line-height: 19px;
+    }
+
+
+    /*
+     * Two-column cards work better on modern phones
+     * without creating a very long dashboard.
+     */
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .stat-card {
+        padding: 16px;
+
+        border-radius: 11px;
+
+        gap: 8px;
+    }
+
+    .stat-title {
+        font-size: 12px;
+
+        line-height: 17px;
+    }
+
+    .stat-value {
+        font-size: 22px;
+    }
+
+
+    /* Dashboard Panels */
+
+    .dashboard-panels {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .dashboard-panel {
+        padding: 18px;
+
+        min-height: 200px;
+
+        border-radius: 11px;
+    }
+
+
+    /* Panel Header */
+
+    .panel-header {
+        gap: 10px;
+    }
+
+    .panel-header h3 {
+        font-size: 15px;
+    }
+
+    .panel-header p {
+        font-size: 11px;
+    }
+
+
+    /* Todo */
+
+    .dashboard-todo-list {
+        max-height: 260px;
+    }
+
+    .todo-title {
+        font-size: 13px;
+    }
+
+    .todo-description {
+        font-size: 11px;
+    }
+
+
+    /* Assistant */
+
+    .assistant-icon {
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 20px;
+    }
+
+    .assistant-panel p {
+        font-size: 12px;
+
+        line-height: 18px;
+
+        margin-bottom: 15px;
+    }
+
+    .assistant-btn {
+        padding: 9px 12px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+   ========================= */
+
+@media (max-width: 380px) {
+
+    .dashboard-content {
+        padding: 18px 12px;
+    }
+
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+
+    .stat-card {
+        padding: 14px;
+    }
+
+
+    .stat-title {
+        font-size: 11px;
+    }
+
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+
+    .dashboard-panel {
+        padding: 16px;
+    }
+
+
+    .welcome-section h1 {
+        font-size: 20px;
+
+        line-height: 27px;
+    }
+}
+

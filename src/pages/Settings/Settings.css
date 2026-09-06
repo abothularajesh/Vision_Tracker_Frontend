@@ -1,0 +1,584 @@
+.settings-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    background: #f8fafc;
+
+    color: #111827;
+}
+
+.settings-main {
+    flex: 1;
+
+    min-width: 0;
+
+    width: 0;
+
+    margin-left: 250px;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.settings-content {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 28px 30px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+}
+
+
+/* Header */
+
+.settings-header {
+    margin-bottom: 26px;
+}
+
+.settings-header h1 {
+    margin: 0;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+.settings-header p {
+    margin: 6px 0 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* Section */
+
+.settings-section {
+    margin-bottom: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.settings-section-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.settings-section-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #eef2ff;
+
+    font-size: 18px;
+}
+
+.settings-section-header h2 {
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 650;
+
+    color: #111827;
+}
+
+.settings-section-header p {
+    margin: 3px 0 0;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* Profile */
+
+.settings-fields {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    padding: 22px;
+}
+
+.settings-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.settings-field label {
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.settings-value {
+    padding: 11px 13px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    background: #f9fafb;
+
+    color: #374151;
+
+    font-size: 14px;
+}
+
+
+/* Theme */
+
+.theme-options {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+    padding: 22px;
+}
+
+.theme-option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.theme-option:hover {
+    background: #f9fafb;
+
+    border-color: #c7d2fe;
+}
+
+.theme-option.active {
+    background: #eef2ff;
+
+    border-color: #6366f1;
+}
+
+.theme-option-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    font-size: 16px;
+}
+
+.theme-option div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    flex: 1;
+}
+
+.theme-option strong {
+    color: #111827;
+
+    font-size: 13px;
+}
+
+.theme-option small {
+    color: #9ca3af;
+
+    font-size: 11px;
+}
+
+.theme-check {
+    color: #4f46e5;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+/* Account */
+
+.account-option {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+}
+
+.account-option strong {
+    color: #111827;
+
+    font-size: 14px;
+}
+
+.account-option p {
+    margin: 5px 0 0;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+.settings-logout-btn {
+    padding: 9px 15px;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 8px;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.settings-logout-btn:hover {
+    background: #fee2e2;
+}
+
+
+/* Danger */
+
+.danger-section {
+    border-color: #fecaca;
+}
+
+.danger-icon {
+    background: #fef2f2;
+}
+
+.delete-account-btn {
+    padding: 9px 15px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: not-allowed;
+}
+
+
+/* Dark Mode */
+
+body.dark-mode .settings-page {
+    background: #111827;
+
+    color: #f9fafb;
+}
+
+body.dark-mode .settings-header h1 {
+    color: #f9fafb;
+}
+
+body.dark-mode .settings-header p {
+    color: #9ca3af;
+}
+
+body.dark-mode .settings-section {
+    background: #1f2937;
+
+    border-color: #374151;
+}
+
+body.dark-mode .settings-section-header {
+    border-color: #374151;
+}
+
+body.dark-mode .settings-section-header h2 {
+    color: #f9fafb;
+}
+
+body.dark-mode .settings-section-icon {
+    background: #312e81;
+}
+
+body.dark-mode .settings-value {
+    background: #111827;
+
+    border-color: #374151;
+
+    color: #d1d5db;
+}
+
+body.dark-mode .theme-option {
+    background: #1f2937;
+
+    border-color: #374151;
+}
+
+body.dark-mode .theme-option:hover {
+    background: #374151;
+}
+
+body.dark-mode .theme-option.active {
+    background: #312e81;
+
+    border-color: #6366f1;
+}
+
+body.dark-mode .theme-option-icon {
+    background: #374151;
+}
+
+body.dark-mode .theme-option strong {
+    color: #f9fafb;
+}
+
+body.dark-mode .account-option strong {
+    color: #f9fafb;
+}
+
+body.dark-mode .danger-section {
+    border-color: #7f1d1d;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (min-width: 820px) and (max-width: 1180px) {
+
+    .settings-main {
+        margin-left: 240px;
+        width: calc(100% - 240px);
+    }
+
+    .settings-content {
+        padding: 24px;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .settings-content {
+        padding: 22px;
+    }
+
+    .settings-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .theme-options {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .settings-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .settings-content {
+        padding: 20px 16px 30px;
+    }
+
+    .settings-header {
+        margin-bottom: 22px;
+    }
+
+    .settings-header h1 {
+        font-size: 24px;
+    }
+
+    .settings-header p {
+        font-size: 13px;
+    }
+
+    .settings-section {
+        margin-bottom: 16px;
+        border-radius: 12px;
+    }
+
+    .settings-section-header {
+        padding: 17px;
+        gap: 11px;
+    }
+
+    .settings-section-icon {
+        width: 35px;
+        height: 35px;
+        flex-shrink: 0;
+        font-size: 16px;
+    }
+
+    .settings-section-header h2 {
+        font-size: 14px;
+    }
+
+    .settings-section-header p {
+        font-size: 11px;
+    }
+
+    .settings-fields {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 17px;
+    }
+
+    .settings-value {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .theme-options {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 17px;
+    }
+
+    .theme-option {
+        padding: 13px;
+    }
+
+    .account-option {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding: 17px;
+    }
+
+    .settings-logout-btn,
+    .delete-account-btn {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .settings-content {
+        padding: 18px 14px 28px;
+    }
+
+    .settings-header h1 {
+        font-size: 22px;
+    }
+
+    .settings-header p {
+        font-size: 12px;
+    }
+
+    .settings-section-header {
+        padding: 15px;
+    }
+
+    .settings-fields {
+        padding: 15px;
+    }
+
+    .theme-options {
+        padding: 15px;
+    }
+
+    .theme-option {
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .theme-option-icon {
+        width: 31px;
+        height: 31px;
+        font-size: 14px;
+    }
+
+    .theme-option strong {
+        font-size: 12px;
+    }
+
+    .theme-option small {
+        font-size: 10px;
+    }
+
+    .account-option {
+        padding: 15px;
+    }
+
+}
