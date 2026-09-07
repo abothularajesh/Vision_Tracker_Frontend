@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AuthForm.css";
-
-const API_BASE_URL = "http://localhost:8080";
+import api from "../../api/api.js";
 
 function AuthForm() {
 
@@ -50,7 +49,10 @@ function AuthForm() {
             console.error(err);
 
             setError(
-                err.message || "Something went wrong. Please try again."
+                err.response?.data?.error ||
+                err.response?.data?.message ||
+                err.message ||
+                "Something went wrong. Please try again."
             );
 
         } finally {
@@ -60,75 +62,60 @@ function AuthForm() {
 
     const handleRegister = async () => {
 
-        const response = await fetch(
-            `${API_BASE_URL}/api/auth/register`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
+        try {
+
+            await api.post(
+                "/auth/register",
+                {
                     username: formData.username,
                     email: formData.email,
                     password: formData.password
-                })
-            }
-        );
+                }
+            );
 
-        if (!response.ok) {
+            setMessage("Registration successful!");
 
-            const errorText = await response.text();
+            setFormData({
+                username: "",
+                email: "",
+                password: ""
+            });
+
+            setShowPassword(false);
+
+            // Switch back to login after registration
+            setTimeout(() => {
+
+                setIsRegister(false);
+                setMessage("");
+
+            }, 1500);
+
+        } catch (error) {
+
+            console.error("Registration error:", error);
 
             throw new Error(
-                errorText || "Registration failed"
+                error.response?.data?.error ||
+                error.response?.data?.message ||
+                "Registration failed"
             );
         }
-
-        setMessage("Registration successful!");
-
-        setFormData({
-            username: "",
-            email: "",
-            password: ""
-        });
-
-        setShowPassword(false);
-
-        // Switch back to login after registration
-        setTimeout(() => {
-
-            setIsRegister(false);
-            setMessage("");
-
-        }, 1500);
     };
 
     const handleLogin = async () => {
 
         try {
 
-            const response = await fetch(
-                `${API_BASE_URL}/api/auth/login`,
+            const response = await api.post(
+                "/auth/login",
                 {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        username: formData.username,
-                        password: formData.password
-                    })
+                    username: formData.username,
+                    password: formData.password
                 }
             );
 
-            const data = await response.json();
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error || "Invalid username or password"
-                );
-            }
+            const data = response.data;
 
             // --------------------------------
             // Store authentication data
@@ -155,6 +142,7 @@ function AuthForm() {
                     "role",
                     data.role
                 );
+
             }
 
             if (
@@ -172,6 +160,7 @@ function AuthForm() {
                 console.warn(
                     "loginStreak was not returned by backend"
                 );
+
             }
 
             // --------------------------------
@@ -184,8 +173,10 @@ function AuthForm() {
 
             console.error("Login error:", error);
 
-            setError(
-                error.message || "Invalid username or password"
+            throw new Error(
+                error.response?.data?.error ||
+                error.response?.data?.message ||
+                "Invalid username or password"
             );
         }
     };
@@ -196,6 +187,9 @@ function AuthForm() {
             "email",
             formData.username
         );
+
+        const API_BASE_URL =
+            import.meta.env.VITE_API_BASE_URL;
 
         window.location.href =
             `${API_BASE_URL}/oauth2/authorization/google`;
@@ -302,7 +296,11 @@ function AuthForm() {
 
                             <input
                                 id="password"
-                                type={showPassword ? "text" : "password"}
+                                type={
+                                    showPassword
+                                        ? "text"
+                                        : "password"
+                                }
                                 name="password"
                                 placeholder="Enter your password"
                                 value={formData.password}
@@ -312,20 +310,44 @@ function AuthForm() {
 
                             <button
                                 type="button"
-                                className={`password-toggle ${showPassword ? "is-crossed" : ""}`}
-                                onClick={() => setShowPassword(!showPassword)}
-                                aria-label={showPassword ? "Hide password" : "Show password"}
+                                className={`password-toggle ${
+                                    showPassword
+                                        ? "is-crossed"
+                                        : ""
+                                }`}
+                                onClick={() =>
+                                    setShowPassword(!showPassword)
+                                }
+                                aria-label={
+                                    showPassword
+                                        ? "Hide password"
+                                        : "Show password"
+                                }
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" fill="currentColor">
-                                    <path d="M256 128C132 128 29.4 208 0 256c29.4 48 132.4 128 256 128s226.6-80 256-128c-29.6-48-132.6-128-256-128zm0 224c-53 0-96-43-96-96s43-96 96-96 96 43 96 96-43 96-96 96zm0-144c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"/>
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 512 512"
+                                    fill="currentColor"
+                                >
+
+                                    <path d="M256 128C132 128 29.4 208 0 256c29.4 48 132.4 128 256 128s226.6-80 256-128c-29.6-48-132.6-128-256-128zm0 224c-53 0-96-43-96-96s43-96 96-96 96 43 96 96-43 96-96 96zm0-144c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z" />
+
                                     <line
                                         className="eye-slash"
-                                        x1="90" y1="256" x2="422" y2="256"
+                                        x1="90"
+                                        y1="256"
+                                        x2="422"
+                                        y2="256"
                                         stroke="currentColor"
                                         strokeWidth="36"
                                         strokeLinecap="round"
                                     />
+
                                 </svg>
+
                             </button>
 
                         </div>
@@ -357,13 +379,17 @@ function AuthForm() {
                     <button
                         type="button"
                         onClick={() => {
+
                             setIsRegister(!isRegister);
                             setMessage("");
                             setError("");
                             setShowPassword(false);
+
                         }}
                     >
-                        {isRegister ? "Login" : "Register"}
+                        {isRegister
+                            ? "Login"
+                            : "Register"}
                     </button>
 
                 </div>
@@ -379,11 +405,13 @@ function AuthForm() {
                     className="google-button"
                     onClick={handleGoogleLogin}
                 >
+
                     <span className="google-icon">
                         G
                     </span>
 
                     Continue with Google
+
                 </button>
 
                 <p className="footer-text">
