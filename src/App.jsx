@@ -5,6 +5,8 @@ import {
     Navigate
 } from "react-router-dom";
 
+import { Analytics } from '@vercel/analytics/react';
+
 import AuthForm from "./AuthForm.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -21,6 +23,7 @@ function App() {
 
     return (
         <BrowserRouter>
+            <Analytics />
 
             <Routes>
 
