@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
 import "./Settings.css";
 
 function Settings() {
+
+    const navigate = useNavigate();
 
     const username = localStorage.getItem("username");
     const email = localStorage.getItem("email");
@@ -25,6 +28,20 @@ function Settings() {
             document.body.classList.remove("dark-mode");
             localStorage.setItem("theme", "light");
         }
+    };
+
+    const handleLogout = () => {
+
+        window.dispatchEvent(new Event("userLogout"));
+
+        //localStorage.removeItem("token");
+        localStorage.removeItem("jwtToken");
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+        localStorage.removeItem("role");
+        localStorage.removeItem("loginStreak");
+
+        navigate("/login");
     };
 
     return (
@@ -218,7 +235,10 @@ function Settings() {
 
                             </div>
 
-                            <button className="settings-logout-btn">
+                            <button 
+                                className="settings-logout-btn"
+                                onClick={handleLogout}    
+                            >
                                 Logout
                             </button>
 

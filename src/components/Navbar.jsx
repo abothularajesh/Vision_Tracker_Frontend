@@ -71,11 +71,6 @@ function Navbar() {
         localStorage.removeItem("email");
 
         /*
-         * Close profile dropdown.
-         */
-        setProfileOpen(false);
-
-        /*
          * Go to login page.
          */
         navigate("/login");

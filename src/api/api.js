@@ -2,10 +2,12 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
+    // baseURL: "http://localhost:8080/api",
     headers: {
         "Content-Type": "application/json"
     }
 });
+//console.log("Base URL is:", import.meta.env.VITE_API_BASE_URL);
 
 // Automatically attach JWT to every request
 api.interceptors.request.use(
@@ -33,6 +35,8 @@ api.interceptors.response.use(
             localStorage.removeItem("jwtToken");
             localStorage.removeItem("username");
             localStorage.removeItem("role");
+            localStorage.removeItem("email");
+            localStorage.removeItem("loginStreak");
 
             window.location.href = "/login";
         }

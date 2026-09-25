@@ -1,34 +1,20 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar.jsx";
 import Sidebar from "../../components/Sidebar.jsx";
+import api from "../../api/api.js";
 import "./Notebook.css";
 
 function Notebook() {
 
     const [notes, setNotes] = useState([]);
-
     const [selectedNote, setSelectedNote] = useState(null);
-
     const [searchQuery, setSearchQuery] = useState("");
-
     const [isCreating, setIsCreating] = useState(false);
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
     const [loading, setLoading] = useState(false);
-
-
-    /*
-     * JWT
-     *
-     * Change "token" here only if your localStorage
-     * uses a different key for the JWT.
-     */
-    const getToken = () => {
-
-        return localStorage.getItem("jwtToken");
-    };
 
 
     /*
@@ -40,25 +26,9 @@ function Notebook() {
 
             setLoading(true);
 
-            const token = getToken();
+            const response = await api.get("/notes");
 
-            const response = await fetch(
-                "http://localhost:8080/api/notes",
-                {
-                    method: "GET",
-
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "Content-Type": "application/json"
-                    }
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error("Failed to load notes");
-            }
-
-            const data = await response.json();
+            const data = response.data;
 
             setNotes(data);
 
@@ -124,25 +94,11 @@ function Notebook() {
 
         try {
 
-            const token = getToken();
-
-            const response = await fetch(
-                `http://localhost:8080/api/notes/search?keyword=${encodeURIComponent(keyword)}`,
-                {
-                    method: "GET",
-
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "Content-Type": "application/json"
-                    }
-                }
+            const response = await api.get(
+                `/notes/search?keyword=${encodeURIComponent(keyword)}`
             );
 
-            if (!response.ok) {
-                throw new Error("Search failed");
-            }
-
-            const data = await response.json();
+            const data = response.data;
 
             setNotes(data);
 
@@ -199,66 +155,48 @@ function Notebook() {
 
         try {
 
-            const token = getToken();
+            /*
+             * CREATE
+             */
+            if (isCreating) {
 
-        /*
-        * CREATE
-        */
-        if (isCreating) {
+                const response = await api.post("/notes", {
+                    title: title,
+                    content: content
+                });
 
-            const response = await fetch(
-                "http://localhost:8080/api/notes",
-                {
-                    method: "POST",
+                /*
+                 * Backend returns NotesDTO as JSON.
+                 */
+                const newNote = response.data;
 
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "Content-Type": "application/json"
-                    },
+                /*
+                 * Add the newly created note
+                 * without removing existing notes.
+                 */
+                setNotes((previousNotes) => [
+                    newNote,
+                    ...previousNotes
+                ]);
 
-                    body: JSON.stringify({
-                        title: title,
-                        content: content
-                    })
-                }
-            );
+                /*
+                 * Select the newly created note.
+                 */
+                setSelectedNote(newNote);
 
-            if (!response.ok) {
-                throw new Error("Failed to create note");
+                /*
+                 * Exit create mode.
+                 */
+                setIsCreating(false);
+
+                /*
+                 * Show the saved note in the editor.
+                 */
+                setTitle(newNote.title || "");
+                setContent(newNote.content || "");
+
+                return;
             }
-
-            /*
-            * Backend now returns NotesDTO as JSON.
-            */
-            const newNote = await response.json();
-
-            /*
-            * Add the newly created note
-            * without removing existing notes.
-            */
-            setNotes((previousNotes) => [
-                newNote,
-                ...previousNotes
-            ]);
-
-            /*
-            * Select the newly created note.
-            */
-            setSelectedNote(newNote);
-
-            /*
-            * Exit create mode.
-            */
-            setIsCreating(false);
-
-            /*
-            * Show the saved note in the editor.
-            */
-            setTitle(newNote.title || "");
-            setContent(newNote.content || "");
-
-            return;
-        }
 
 
             /*
@@ -266,26 +204,13 @@ function Notebook() {
              */
             if (selectedNote) {
 
-                const response = await fetch(
-                    `http://localhost:8080/api/notes/${selectedNote.id}`,
+                await api.put(
+                    `/notes/${selectedNote.id}`,
                     {
-                        method: "PUT",
-
-                        headers: {
-                            "Authorization": `Bearer ${token}`,
-                            "Content-Type": "application/json"
-                        },
-
-                        body: JSON.stringify({
-                            title: title,
-                            content: content
-                        })
+                        title: title,
+                        content: content
                     }
                 );
-
-                if (!response.ok) {
-                    throw new Error("Failed to update note");
-                }
 
                 /*
                  * Backend returns:
@@ -331,23 +256,9 @@ function Notebook() {
 
         try {
 
-            const token = getToken();
-
-            const response = await fetch(
-                `http://localhost:8080/api/notes/${selectedNote.id}`,
-                {
-                    method: "DELETE",
-
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "Content-Type": "application/json"
-                    }
-                }
+            await api.delete(
+                `/notes/${selectedNote.id}`
             );
-
-            if (!response.ok) {
-                throw new Error("Failed to delete note");
-            }
 
             /*
              * Remove deleted note from frontend.
